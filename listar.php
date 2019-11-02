@@ -3,7 +3,7 @@
 	require("conexion.php");
 
 	//HACER LA CONSULTA A LA TABLA USUARIOS
-	$sql_consultar = "SELECT * FROM usuarios";
+	$sql_consultar = "SELECT * FROM usuarios ORDER BY nombre ASC";
 	$resultado = $conn->query($sql_consultar);
 
 ?>
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Listado de Usuarios</h1>
+		<h1>Listado de Usuarios <a class="btn btn-success" href="registro.php">Nuevo</a></h1>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -35,7 +35,10 @@
 						<td><?php echo $fila['email']; ?></td>
 						<td><?php echo $fila['fecha']; ?></td>
 						<td><?php echo $fila['ciudad']; ?></td>
-						<td></td>
+						<td>
+							<a href="editar.php?id=<?php echo $fila['id']; ?>" class="btn btn-info">Editar</a>
+							<a href="borrar.php?id=<?php echo $fila['id'] ?>" class="btn btn-danger">Borrar</a>
+						</td>
 					</tr>
 				<?php } ?>
 			</tbody>

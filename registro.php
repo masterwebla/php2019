@@ -33,6 +33,7 @@
 			</div>
 			<div class="form-group">
 				<button class="btn btn-success">Guardar Usuario</button>
+				<a href="listar.php" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 	</div>

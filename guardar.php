@@ -14,6 +14,6 @@
 					VALUES ('$nombre','$email','$fecha','$ciudad')";
 	$conn->exec($sql_insertar);
 
-	header("location:registro.php");
+	header("location:listar.php");
 
 ?>
