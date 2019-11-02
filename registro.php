@@ -1,3 +1,11 @@
+<?php 
+	//Conectar a la Base de Datos
+	require("conexion.php");
+
+	//Consultar ciudades
+	$sql_ciudades = "SELECT * FROM ciudades ORDER BY nombre ASC";
+	$resultado = $conn->query($sql_ciudades);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +33,11 @@
 			<div class="form-group">
 				<label for="ciudad">Ciudad</label>
 				<select name="ciudad" class="form-control" required>
-					<option>Bogota</option>
-					<option>Cali</option>
-					<option>Medellin</option>
-					<option>Barranquilla</option>
+					<option value="">Seleccionar Ciudad</option>
+					<?php while($fila = $resultado->fetch(PDO::FETCH_ASSOC)){
+							echo "<option>".$fila['nombre']."</option>";
+					 	} 
+					?>
 				</select>
 			</div>
 			<div class="form-group">
