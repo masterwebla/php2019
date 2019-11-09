@@ -24,7 +24,7 @@
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" name="email" required>
+				<input type="email" class="form-control" id="email" name="email" required onblur="consultar()">
 			</div>
 			<div class="form-group">
 				<label for="fecha">Fecha</label>
@@ -49,5 +49,23 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+		function consultar(){
+			var email = $('#email').val();
+			console.log(email);
+			$.ajax({
+				url:"buscaremail.php",
+				data:{email:email},
+				type:"POST",
+				success:function(cantidad){
+					console.log(cantidad);
+					if(cantidad>0)
+						$('#email').css({"border":"4px solid red"});
+					else
+						$('#email').css({"border":"4px solid green"});
+				}
+			});
+		}
+	</script>
 </body>
 </html>
